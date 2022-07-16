@@ -1,8 +1,10 @@
-package entity;
+package com.game.unity_api.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -10,6 +12,8 @@ import java.sql.Time;
 public class User {
     private String UserId;
     private String Name;
+    @Id
+    @Column(unique = true)
     private String Email;
     private String Status;
     private Integer Coin;
