@@ -10,6 +10,7 @@ import java.sql.Time;
 
 @Entity
 public class User {
+    @Column(unique = true)
     private String UserId;
     private String Name;
     @Id
