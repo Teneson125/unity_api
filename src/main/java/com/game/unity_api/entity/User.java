@@ -26,12 +26,14 @@ public class User {
     private Integer Xp;
     private Integer Level;
     private String Reason;
+    private String RefId;
+    private String RefStatus;
     @JsonFormat(pattern = "YYYY-MM-DD")
     private Date CreatedDate;
     @JsonFormat(pattern = "HH:MM:SS")
     private Time CreatedTime;
 
-    public User(String userId, String name, String email, String status, Integer coin, Integer balance, Integer keySilver, Integer keyGold, Integer keyDiamond, Integer totalReferral, Integer xp, Integer level, String reason, Date createdDate, Time createdTime) {
+    public User(String userId, String name, String email, String status, Integer coin, Integer balance, Integer keySilver, Integer keyGold, Integer keyDiamond, Integer totalReferral, Integer xp, Integer level, String reason, String refId, String refStatus, Date createdDate, Time createdTime) {
         UserId = userId;
         Name = name;
         Email = email;
@@ -45,12 +47,13 @@ public class User {
         Xp = xp;
         Level = level;
         Reason = reason;
+        RefId = refId;
+        RefStatus = refStatus;
         CreatedDate = createdDate;
         CreatedTime = createdTime;
     }
 
     public String getUserId() {
-
         return UserId;
     }
 
@@ -152,6 +155,22 @@ public class User {
 
     public void setReason(String reason) {
         Reason = reason;
+    }
+
+    public String getRefId() {
+        return RefId;
+    }
+
+    public void setRefId(String refId) {
+        RefId = refId;
+    }
+
+    public String getRefStatus() {
+        return RefStatus;
+    }
+
+    public void setRefStatus(String refStatus) {
+        RefStatus = refStatus;
     }
 
     public Date getCreatedDate() {
