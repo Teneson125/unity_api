@@ -25,4 +25,68 @@ public class Referral {
         KeyDiamond = keyDiamond;
         Status = status;
     }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getRefId() {
+        return RefId;
+    }
+
+    public void setRefId(String refId) {
+        RefId = refId;
+    }
+
+    public Double getAmount() {
+        return Amount;
+    }
+
+    public void setAmount(Double amount) {
+        Amount = amount;
+    }
+
+    public Integer getCoin() {
+        return Coin;
+    }
+
+    public void setCoin(Integer coin) {
+        Coin = coin;
+    }
+
+    public Integer getKeySilver() {
+        return KeySilver;
+    }
+
+    public void setKeySilver(Integer keySilver) {
+        KeySilver = keySilver;
+    }
+
+    public Integer getKeyGold() {
+        return KeyGold;
+    }
+
+    public void setKeyGold(Integer keyGold) {
+        KeyGold = keyGold;
+    }
+
+    public Integer getKeyDiamond() {
+        return KeyDiamond;
+    }
+
+    public void setKeyDiamond(Integer keyDiamond) {
+        KeyDiamond = keyDiamond;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
 }
