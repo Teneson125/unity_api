@@ -11,8 +11,8 @@ public class OtpController {
     @Autowired
     OtpService otpService;
 
-    @PostMapping("trigger-otp")
-    public void triggerOtp(@RequestParam String email){
+    @PostMapping("send-otp")
+    public void sendOtp(@RequestParam String email){
         otpService.sendOtp(email);
     }
 }
