@@ -2,6 +2,7 @@ package com.game.unity_api.service;
 
 import com.game.unity_api.entity.Referral;
 import com.game.unity_api.entity.User;
+import com.game.unity_api.entity.UserDetail;
 import com.game.unity_api.repository.ReferralRepository;
 import com.game.unity_api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,16 +41,21 @@ public class UserService {
     @Autowired
     CoinService coinService;
 
-    public Map<String, String> getUserDetail(String email, String otp) {
+    public UserDetail getUserDetail(String email, String otp) {
         HashMap<String, String> map = new HashMap<>();
         HashMap<String, User> map1 = new HashMap<>();
 
         if(otpService.validateOtp(email, otp)){
             if(checkEmailId(email)){
                 User user = userRepository.findByEmail(email);
-                map1.put("user", user);
-                map.put("message","Login Success");
-                return map;
+                if(user.getStatus().equals("active") || user.getStatus().equals("created")){
+                    map1.put("user", user);
+                    map.put("message","Login Success");
+                    return new UserDetail(map, map1);
+                }
+                else {
+                    map.put("message","Account is " + user.getStatus());
+                }
             }
             else {
                 map.put("message","Email Not Register");
@@ -58,7 +64,7 @@ public class UserService {
         }else {
             map.put("message","Invalid OTP");
         }
-        return map;
+        return new UserDetail(map);
     }
 
     public Map<String, String> createUser(String email, String name, String refId, String otp){

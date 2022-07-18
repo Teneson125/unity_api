@@ -1,6 +1,6 @@
 package com.game.unity_api.controller;
 
-import com.game.unity_api.service.OtpService;
+import com.game.unity_api.entity.UserDetail;
 import com.game.unity_api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ public class UserController {
         return userService.createUser(email, name, refId, otp);
     }
     @PostMapping("login")
-    public Map<String, String> login(@RequestParam String email, @RequestParam String otp){
+    public UserDetail login(@RequestParam String email, @RequestParam String otp){
         return userService.getUserDetail(email, otp);
     }
 
