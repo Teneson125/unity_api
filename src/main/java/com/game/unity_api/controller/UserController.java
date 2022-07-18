@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 public class UserController {
     @Autowired
@@ -17,8 +19,8 @@ public class UserController {
         return userService.createUser(email, name, refId, otp);
     }
     @PostMapping("login")
-    public void login(@RequestParam String email, @RequestParam String otp){
-
+    public Map<String, String> login(@RequestParam String email, @RequestParam String otp){
+        return userService.getUserDetail(email, otp);
     }
 
 }

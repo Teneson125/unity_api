@@ -7,6 +7,8 @@ import com.game.unity_api.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 
@@ -35,9 +37,28 @@ public class UserService {
     ReferralRepository referralRepository;
     @Autowired
     OtpService otpService;
-    public String createUser(String email, String name, String refId, String otp){
+
+    public Map<String, String> getUserDetail(String email, String otp) {
+        HashMap<String, String> map = new HashMap<>();
+
         if(otpService.validateOtp(email, otp)){
             if(checkEmailId(email)){
+                User user = userRepository.findByEmail(email);
+                map.put("success","Login Success");
+            }
+            else {
+                map.put("error","Email Not Register");
+            }
+
+        }else {
+            map.put("error","Invalid OTP");
+        }
+        return map;
+    }
+
+    public String createUser(String email, String name, String refId, String otp){
+        if(otpService.validateOtp(email, otp)){
+            if(!checkEmailId(email)){
                 if(checkRefId(refId)){
                     userData(refId);
                     User user = new User(userId, name, email, status, coin, balance,keySilver, keyGold, keyDiamond, totalReferral, xp, level, reason, refId, refStatus, date, time);
@@ -68,9 +89,9 @@ public class UserService {
     }
     private boolean checkEmailId(String email){
         if(userRepository.findByEmail(email) == null){
-            return true;
-        }else {
             return false;
+        }else {
+            return true;
         }
     }
 
