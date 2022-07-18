@@ -6,87 +6,87 @@ import javax.persistence.*;
 public class Referral {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    private Long id;
     @Column(unique = true)
-    private String RefId;
-    private Double Amount;
-    private Integer Coin;
-    private Integer KeySilver;
-    private Integer KeyGold;
-    private Integer KeyDiamond;
-    private String Status;
+    private String refId;
+    private Double amount;
+    private Integer coin;
+    private Integer keySilver;
+    private Integer keyGold;
+    private Integer keyDiamond;
+    private String status;
 
     public Referral(String refId, Double amount, Integer coin, Integer keySilver, Integer keyGold, Integer keyDiamond, String status) {
-        RefId = refId;
-        Amount = amount;
-        Coin = coin;
-        KeySilver = keySilver;
-        KeyGold = keyGold;
-        KeyDiamond = keyDiamond;
-        Status = status;
+        this.refId = refId;
+        this.amount = amount;
+        this.coin = coin;
+        this.keySilver = keySilver;
+        this.keyGold = keyGold;
+        this.keyDiamond = keyDiamond;
+        this.status = status;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getRefId() {
-        return RefId;
+        return refId;
     }
 
     public void setRefId(String refId) {
-        RefId = refId;
+        this.refId = refId;
     }
 
     public Double getAmount() {
-        return Amount;
+        return amount;
     }
 
     public void setAmount(Double amount) {
-        Amount = amount;
+        this.amount = amount;
     }
 
     public Integer getCoin() {
-        return Coin;
+        return coin;
     }
 
     public void setCoin(Integer coin) {
-        Coin = coin;
+        this.coin = coin;
     }
 
     public Integer getKeySilver() {
-        return KeySilver;
+        return keySilver;
     }
 
     public void setKeySilver(Integer keySilver) {
-        KeySilver = keySilver;
+        this.keySilver = keySilver;
     }
 
     public Integer getKeyGold() {
-        return KeyGold;
+        return keyGold;
     }
 
     public void setKeyGold(Integer keyGold) {
-        KeyGold = keyGold;
+        this.keyGold = keyGold;
     }
 
     public Integer getKeyDiamond() {
-        return KeyDiamond;
+        return keyDiamond;
     }
 
     public void setKeyDiamond(Integer keyDiamond) {
-        KeyDiamond = keyDiamond;
+        this.keyDiamond = keyDiamond;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 }

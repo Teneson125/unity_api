@@ -11,181 +11,181 @@ import java.sql.Time;
 @Entity
 public class User {
     @Column(unique = true)
-    private String UserId;
-    private String Name;
+    private String userId;
+    private String name;
     @Id
     @Column(unique = true)
-    private String Email;
-    private String Status;
-    private Integer Coin;
-    private Integer Balance;
-    private Integer KeySilver;
-    private Integer KeyGold;
-    private Integer KeyDiamond;
-    private Integer TotalReferral;
-    private Integer Xp;
-    private Integer Level;
-    private String Reason;
-    private String RefId;
-    private String RefStatus;
+    private String email;
+    private String status;
+    private Integer coin;
+    private Integer balance;
+    private Integer keySilver;
+    private Integer keyGold;
+    private Integer keyDiamond;
+    private Integer totalReferral;
+    private Integer xp;
+    private Integer level;
+    private String reason;
+    private String refId;
+    private String refStatus;
     @JsonFormat(pattern = "YYYY-MM-DD")
-    private Date CreatedDate;
+    private Date createdDate;
     @JsonFormat(pattern = "HH:MM:SS")
-    private Time CreatedTime;
+    private Time createdTime;
 
     public User(String userId, String name, String email, String status, Integer coin, Integer balance, Integer keySilver, Integer keyGold, Integer keyDiamond, Integer totalReferral, Integer xp, Integer level, String reason, String refId, String refStatus, Date createdDate, Time createdTime) {
-        UserId = userId;
-        Name = name;
-        Email = email;
-        Status = status;
-        Coin = coin;
-        Balance = balance;
-        KeySilver = keySilver;
-        KeyGold = keyGold;
-        KeyDiamond = keyDiamond;
-        TotalReferral = totalReferral;
-        Xp = xp;
-        Level = level;
-        Reason = reason;
-        RefId = refId;
-        RefStatus = refStatus;
-        CreatedDate = createdDate;
-        CreatedTime = createdTime;
+        this.userId = userId;
+        this.name = name;
+        this.email = email;
+        this.status = status;
+        this.coin = coin;
+        this.balance = balance;
+        this.keySilver = keySilver;
+        this.keyGold = keyGold;
+        this.keyDiamond = keyDiamond;
+        this.totalReferral = totalReferral;
+        this.xp = xp;
+        this.level = level;
+        this.reason = reason;
+        this.refId = refId;
+        this.refStatus = refStatus;
+        this.createdDate = createdDate;
+        this.createdTime = createdTime;
     }
 
     public String getUserId() {
-        return UserId;
+        return userId;
     }
 
     public void setUserId(String userId) {
-        UserId = userId;
+        this.userId = userId;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 
     public Integer getCoin() {
-        return Coin;
+        return coin;
     }
 
     public void setCoin(Integer coin) {
-        Coin = coin;
+        this.coin = coin;
     }
 
     public Integer getBalance() {
-        return Balance;
+        return balance;
     }
 
     public void setBalance(Integer balance) {
-        Balance = balance;
+        this.balance = balance;
     }
 
     public Integer getKeySilver() {
-        return KeySilver;
+        return keySilver;
     }
 
     public void setKeySilver(Integer keySilver) {
-        KeySilver = keySilver;
+        this.keySilver = keySilver;
     }
 
     public Integer getKeyGold() {
-        return KeyGold;
+        return keyGold;
     }
 
     public void setKeyGold(Integer keyGold) {
-        KeyGold = keyGold;
+        this.keyGold = keyGold;
     }
 
     public Integer getKeyDiamond() {
-        return KeyDiamond;
+        return keyDiamond;
     }
 
     public void setKeyDiamond(Integer keyDiamond) {
-        KeyDiamond = keyDiamond;
+        this.keyDiamond = keyDiamond;
     }
 
     public Integer getTotalReferral() {
-        return TotalReferral;
+        return totalReferral;
     }
 
     public void setTotalReferral(Integer totalReferral) {
-        TotalReferral = totalReferral;
+        this.totalReferral = totalReferral;
     }
 
     public Integer getXp() {
-        return Xp;
+        return xp;
     }
 
     public void setXp(Integer xp) {
-        Xp = xp;
+        this.xp = xp;
     }
 
     public Integer getLevel() {
-        return Level;
+        return level;
     }
 
     public void setLevel(Integer level) {
-        Level = level;
+        this.level = level;
     }
 
     public String getReason() {
-        return Reason;
+        return reason;
     }
 
     public void setReason(String reason) {
-        Reason = reason;
+        this.reason = reason;
     }
 
     public String getRefId() {
-        return RefId;
+        return refId;
     }
 
     public void setRefId(String refId) {
-        RefId = refId;
+        this.refId = refId;
     }
 
     public String getRefStatus() {
-        return RefStatus;
+        return refStatus;
     }
 
     public void setRefStatus(String refStatus) {
-        RefStatus = refStatus;
+        this.refStatus = refStatus;
     }
 
     public Date getCreatedDate() {
-        return CreatedDate;
+        return createdDate;
     }
 
     public void setCreatedDate(Date createdDate) {
-        CreatedDate = createdDate;
+        this.createdDate = createdDate;
     }
 
     public Time getCreatedTime() {
-        return CreatedTime;
+        return createdTime;
     }
 
     public void setCreatedTime(Time createdTime) {
-        CreatedTime = createdTime;
+        this.createdTime = createdTime;
     }
 }

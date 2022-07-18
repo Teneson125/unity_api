@@ -13,68 +13,68 @@ import java.util.Date;
 public class KeysDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    private String Email;
-    private String KeyName;
-    private String Reason;
+    private Long id;
+    private String email;
+    private String keyName;
+    private String reason;
     @JsonFormat(pattern = "YYYY-MM-DD")
-    private Date Date;
+    private Date date;
     @JsonFormat(pattern = "HH:MM:SS")
-    private Time Time;
+    private Time time;
 
-    public KeysDetails(String email, String keyName, String reason, java.util.Date date, java.sql.Time time) {
-        Email = email;
-        KeyName = keyName;
-        Reason = reason;
-        Date = date;
-        Time = time;
+    public KeysDetails(String email, String keyName, String reason, Date date, Time time) {
+        this.email = email;
+        this.keyName = keyName;
+        this.reason = reason;
+        this.date = date;
+        this.time = time;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getKeyName() {
-        return KeyName;
+        return keyName;
     }
 
     public void setKeyName(String keyName) {
-        KeyName = keyName;
+        this.keyName = keyName;
     }
 
     public String getReason() {
-        return Reason;
+        return reason;
     }
 
     public void setReason(String reason) {
-        Reason = reason;
+        this.reason = reason;
     }
 
-    public java.util.Date getDate() {
-        return Date;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDate(java.util.Date date) {
-        Date = date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public java.sql.Time getTime() {
-        return Time;
+    public Time getTime() {
+        return time;
     }
 
-    public void setTime(java.sql.Time time) {
-        Time = time;
+    public void setTime(Time time) {
+        this.time = time;
     }
 }

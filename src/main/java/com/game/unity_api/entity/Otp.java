@@ -11,49 +11,49 @@ import java.util.Date;
 public class Otp {
 
     @Id
-    private String Email;
-    private String Otp;
+    private String email;
+    private String tpo;
     @JsonFormat(pattern = "YYYY-MM-DD")
-    private Date CreatedDate;
+    private Date createdDate;
     @JsonFormat(pattern = "HH:MM:SS")
-    private Time CreatedTime;
+    private Time createdTime;
 
-    public Otp(String email, String otp, Date createdDate, Time createdTime) {
-        Email = email;
-        Otp = otp;
-        CreatedDate = createdDate;
-        CreatedTime = createdTime;
+    public Otp(String email, String tpo, Date createdDate, Time createdTime) {
+        this.email = email;
+        this.tpo = tpo;
+        this.createdDate = createdDate;
+        this.createdTime = createdTime;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
-    public String getOtp() {
-        return Otp;
+    public String getTpo() {
+        return tpo;
     }
 
-    public void setOtp(String otp) {
-        Otp = otp;
+    public void setTpo(String tpo) {
+        this.tpo = tpo;
     }
 
     public Date getCreatedDate() {
-        return CreatedDate;
+        return createdDate;
     }
 
     public void setCreatedDate(Date createdDate) {
-        CreatedDate = createdDate;
+        this.createdDate = createdDate;
     }
 
     public Time getCreatedTime() {
-        return CreatedTime;
+        return createdTime;
     }
 
     public void setCreatedTime(Time createdTime) {
-        CreatedTime = createdTime;
+        this.createdTime = createdTime;
     }
 }

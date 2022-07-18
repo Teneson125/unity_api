@@ -13,88 +13,88 @@ import java.util.Date;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
-    private String Email;
-    private Double Amount;
-    private String ProductName;
-    private String TransactionType;
-    private String Reason;
+    private Long id;
+    private String email;
+    private Double amount;
+    private String productName;
+    private String transactionType;
+    private String reason;
     @JsonFormat(pattern = "YYYY-MM-DD")
-    private Date Date;
+    private Date date;
     @JsonFormat(pattern = "HH:MM:SS")
-    private Time Time;
+    private Time time;
 
-    public Transaction(String email, Double amount, String productName, String transactionType, String reason, java.util.Date date, java.sql.Time time) {
-        Email = email;
-        Amount = amount;
-        ProductName = productName;
-        TransactionType = transactionType;
-        Reason = reason;
-        Date = date;
-        Time = time;
+    public Transaction(String email, Double amount, String productName, String transactionType, String reason, Date date, Time time) {
+        this.email = email;
+        this.amount = amount;
+        this.productName = productName;
+        this.transactionType = transactionType;
+        this.reason = reason;
+        this.date = date;
+        this.time = time;
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public Double getAmount() {
-        return Amount;
+        return amount;
     }
 
     public void setAmount(Double amount) {
-        Amount = amount;
+        this.amount = amount;
     }
 
     public String getProductName() {
-        return ProductName;
+        return productName;
     }
 
     public void setProductName(String productName) {
-        ProductName = productName;
+        this.productName = productName;
     }
 
     public String getTransactionType() {
-        return TransactionType;
+        return transactionType;
     }
 
     public void setTransactionType(String transactionType) {
-        TransactionType = transactionType;
+        this.transactionType = transactionType;
     }
 
     public String getReason() {
-        return Reason;
+        return reason;
     }
 
     public void setReason(String reason) {
-        Reason = reason;
+        this.reason = reason;
     }
 
-    public java.util.Date getDate() {
-        return Date;
+    public Date getDate() {
+        return date;
     }
 
-    public void setDate(java.util.Date date) {
-        Date = date;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public java.sql.Time getTime() {
-        return Time;
+    public Time getTime() {
+        return time;
     }
 
-    public void setTime(java.sql.Time time) {
-        Time = time;
+    public void setTime(Time time) {
+        this.time = time;
     }
 }
