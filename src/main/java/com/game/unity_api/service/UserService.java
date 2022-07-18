@@ -33,23 +33,29 @@ public class UserService {
     DateTimeService dateTimeService;
     @Autowired
     ReferralRepository referralRepository;
-
-    public String createUser(String email, String name, String refId ){
-
-        if(checkEmailId(email)){
-            if(checkRefId(refId)){
-                userData(refId);
-                User user = new User(userId, name, email, status, coin, balance,keySilver, keyGold, keyDiamond, totalReferral, xp, level, reason, refId, refStatus, date, time);
-                userRepository.save(user);
-                return "Success";
+    @Autowired
+    OtpService otpService;
+    public String createUser(String email, String name, String refId, String otp){
+        if(otpService.validateOtp(email, otp)){
+            if(checkEmailId(email)){
+                if(checkRefId(refId)){
+                    userData(refId);
+                    User user = new User(userId, name, email, status, coin, balance,keySilver, keyGold, keyDiamond, totalReferral, xp, level, reason, refId, refStatus, date, time);
+                    userRepository.save(user);
+                    return "Success";
+                }
+                else {
+                    return "Invalid Referral Id";
+                }
             }
             else {
-                return "Invalid Referral Id";
+                return "Email Already Available";
             }
         }
         else {
-            return "Email Already Available";
+            return "Invalid Otp";
         }
+
 
     }
 

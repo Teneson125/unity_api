@@ -19,6 +19,14 @@ public class OtpService {
     @Autowired
     private DateTimeService dateTimeService;
 
+    public boolean validateOtp(String email, String otp){
+        Otp data = otpRepository.findByEmail(email);
+        if(otp.equals(data.getOtp())){
+            return true;
+        }else {
+            return false;
+        }
+    }
     public void sendOtp(String email){
         Random random = new Random();
         String otp = String.valueOf(random.nextInt(999999));
