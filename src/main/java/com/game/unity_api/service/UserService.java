@@ -35,12 +35,13 @@ public class UserService {
 
     public void createUser(String email, String name, String refId ){
 
-        userData(referralService.findReferralId(refId));
+        userData(refId);
         User user = new User(userId, name, email, status, coin, balance,keySilver, keyGold, keyDiamond, totalReferral, xp, level, reason, refId, refStatus, date, time);
         userRepository.save(user);
     }
 
-    private void userData(Referral referral) {
+    private void userData(String refId) {
+        Referral referral = referralService.findReferralId(refId);
         if(referral != null){
             if(referral.getStatus().equals("active")) {
                 coin = referral.getCoin();
@@ -48,27 +49,22 @@ public class UserService {
                 keySilver = referral.getKeySilver();
                 keyGold = referral.getKeyGold();
                 keyDiamond = referral.getKeyDiamond();
-                status = "created";
-                totalReferral = 0;
-                xp = 0;
-                level = 0;
-                reason = "no data";
-                refStatus = "coin";
             }
         }else{
-            coin = 0;
-            balance = 0.00;
-            keySilver = 0;
-            keyGold = 0;
-            keyDiamond = 0;
-            totalReferral = 0;
-            xp = 0;
-            level = 0;
-            reason = "no data";
-            refStatus = "coin";
-
+            referral = referralService.findReferralId("noReferral");
+            coin = referral.getCoin();
+            balance = referral.getAmount();
+            keySilver = referral.getKeySilver();
+            keyGold = referral.getKeyGold();
+            keyDiamond = referral.getKeyDiamond();
         }
         userId = createUserId();
+        xp = 0;
+        level = 0;
+        totalReferral = 0;
+        status = "created";
+        reason = "no data";
+        refStatus = "coin";
         time = dateTimeService.currentTime();
         date = dateTimeService.currentDate();
     }
