@@ -44,40 +44,41 @@ public class UserService {
         if(otpService.validateOtp(email, otp)){
             if(checkEmailId(email)){
                 User user = userRepository.findByEmail(email);
-                map.put("success","Login Success");
+                map.put("message","Login Success");
             }
             else {
-                map.put("error","Email Not Register");
+                map.put("message","Email Not Register");
             }
 
         }else {
-            map.put("error","Invalid OTP");
+            map.put("message","Invalid OTP");
         }
         return map;
     }
 
-    public String createUser(String email, String name, String refId, String otp){
+    public Map<String, String> createUser(String email, String name, String refId, String otp){
+        HashMap<String, String> map = new HashMap<>();
+
         if(otpService.validateOtp(email, otp)){
             if(!checkEmailId(email)){
                 if(checkRefId(refId)){
                     userData(refId);
                     User user = new User(userId, name, email, status, coin, balance,keySilver, keyGold, keyDiamond, totalReferral, xp, level, reason, refId, refStatus, date, time);
                     userRepository.save(user);
-                    return "Success";
+                    map.put("message","Register Success");
                 }
                 else {
-                    return "Invalid Referral Id";
+                    map.put("message","Invalid Referral Id");
                 }
             }
             else {
-                return "Email Already Available";
+                map.put("message","Email Already Register");
             }
         }
         else {
-            return "Invalid Otp";
+            map.put("message","Invalid Otp");
         }
-
-
+        return map;
     }
 
     private boolean checkRefId(String refId) {

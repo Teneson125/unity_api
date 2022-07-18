@@ -15,7 +15,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping("register")
-    public String userRegister(@RequestParam String email, @RequestParam String name, @RequestParam(defaultValue = "noReferral") String refId, @RequestParam String otp ){
+    public Map<String, String> userRegister(@RequestParam String email, @RequestParam String name, @RequestParam(defaultValue = "noReferral") String refId, @RequestParam String otp ){
         return userService.createUser(email, name, refId, otp);
     }
     @PostMapping("login")
