@@ -11,7 +11,4 @@ public class ReferralService {
     @Autowired
     ReferralRepository referralRepository;
 
-    public Referral findReferralId(String refId) {
-        return referralRepository.findByRefId(refId);
-    }
 }
