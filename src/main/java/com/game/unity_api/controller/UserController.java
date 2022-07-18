@@ -11,16 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     UserService userService;
-    @Autowired
-    OtpService otpService;
 
     @PostMapping("register")
-    public String userRegister(@RequestParam String email, @RequestParam String name, @RequestParam(defaultValue = "noReferral") String refId ){
+    public String userRegister(@RequestParam String email, @RequestParam String name, @RequestParam(defaultValue = "noReferral") String refId, @RequestParam String otp ){
         return userService.createUser(email, name, refId);
     }
     @PostMapping("login")
-    public void login(@RequestParam String email){
-        otpService.sendOtp(email);
+    public void login(@RequestParam String email, @RequestParam String otp){
+
     }
 
 }
