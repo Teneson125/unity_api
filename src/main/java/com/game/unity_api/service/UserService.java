@@ -37,6 +37,8 @@ public class UserService {
     ReferralRepository referralRepository;
     @Autowired
     OtpService otpService;
+    @Autowired
+    CoinService coinService;
 
     public Map<String, String> getUserDetail(String email, String otp) {
         HashMap<String, String> map = new HashMap<>();
@@ -65,10 +67,15 @@ public class UserService {
         if(otpService.validateOtp(email, otp)){
             if(!checkEmailId(email)){
                 if(checkRefId(refId)){
-                    userData(refId);
-                    User user = new User(userId, name, email, status, coin, balance,keySilver, keyGold, keyDiamond, totalReferral, xp, level, reason, refId, refStatus, date, time);
-                    userRepository.save(user);
-                    map.put("message","Register Success");
+                    if(checkActive(refId)){
+                        userData(email, refId);
+                        User user = new User(userId, name, email, status, coin, balance,keySilver, keyGold, keyDiamond, totalReferral, xp, level, reason, refId, refStatus, date, time);
+                        userRepository.save(user);
+                        map.put("message","Register Success");
+                    }
+                    else {
+                        map.put("message","Referral Id Locked");
+                    }
                 }
                 else {
                     map.put("message","Invalid Referral Id");
@@ -84,30 +91,37 @@ public class UserService {
         return map;
     }
 
-    private boolean checkRefId(String refId) {
-        if(referralRepository.findByRefId(refId) == null){
-            return false;
-        }else {
-            return true;
-        }
-    }
-    private boolean checkEmailId(String email){
-        if(userRepository.findByEmail(email) == null){
-            return false;
-        }else {
-            return true;
-        }
+    private boolean checkActive(String refId) {
+        return referralRepository.findByRefId(refId).getStatus().equals("active");
     }
 
-    private void userData(String refId) {
+    private boolean checkRefId(String refId) {
+        return referralRepository.findByRefId(refId) != null;
+    }
+    private boolean checkEmailId(String email){
+        return userRepository.findByEmail(email) != null;
+    }
+
+    private void userData(String email, String refId) {
+        userId = createUserId();
+        xp = 0;
+        level = 0;
+        totalReferral = 0;
+        status = "created";
+        reason = "no information";
+        refStatus = "coin";
+        time = dateTimeService.currentTime();
+        date = dateTimeService.currentDate();
+
         Referral referral = referralRepository.findByRefId(refId);
-        if(referral != null){
-            if(referral.getStatus().equals("active")) {
-                coin = referral.getCoin();
-                balance = referral.getAmount();
-                keySilver = referral.getKeySilver();
-                keyGold = referral.getKeyGold();
-                keyDiamond = referral.getKeyDiamond();
+        if(referral != null && !referral.getRefId().equals("noReferral")){
+            coin = referral.getCoin();
+            balance = referral.getAmount();
+            keySilver = referral.getKeySilver();
+            keyGold = referral.getKeyGold();
+            keyDiamond = referral.getKeyDiamond();
+            if(coin > 0){
+                coinService.insertData(email, coin, "for using referral", date, time);
             }
         }else{
             referral = referralRepository.findByRefId("noReferral");
@@ -116,16 +130,10 @@ public class UserService {
             keySilver = referral.getKeySilver();
             keyGold = referral.getKeyGold();
             keyDiamond = referral.getKeyDiamond();
+            if(coin > 0){
+                coinService.insertData(email, coin, "login bonus", date, time);
+            }
         }
-        userId = createUserId();
-        xp = 0;
-        level = 0;
-        totalReferral = 0;
-        status = "created";
-        reason = "no data";
-        refStatus = "coin";
-        time = dateTimeService.currentTime();
-        date = dateTimeService.currentDate();
     }
 
     private String  createUserId() {
