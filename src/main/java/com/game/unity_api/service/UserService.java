@@ -34,22 +34,22 @@ public class UserService {
     @Autowired
     ReferralRepository referralRepository;
 
-    public void createUser(String email, String name, String refId ){
+    public String createUser(String email, String name, String refId ){
 
         if(checkEmailId(email)){
             if(checkRefId(refId)){
                 userData(refId);
                 User user = new User(userId, name, email, status, coin, balance,keySilver, keyGold, keyDiamond, totalReferral, xp, level, reason, refId, refStatus, date, time);
                 userRepository.save(user);
+                return "Success";
             }
             else {
-                System.out.println("Invalid Referral Id");
+                return "Invalid Referral Id";
             }
         }
         else {
-            System.out.println("Email Already Available");
+            return "Email Already Available";
         }
-
 
     }
 

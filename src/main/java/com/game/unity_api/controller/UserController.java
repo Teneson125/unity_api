@@ -12,7 +12,7 @@ public class UserController {
     UserService userService;
 
     @PostMapping("register")
-    public void userRegister(@RequestParam String email, @RequestParam String name, @RequestParam(defaultValue = "noReferral") String refId ){
-        userService.createUser(email, name, refId);
+    public String userRegister(@RequestParam String email, @RequestParam String name, @RequestParam(defaultValue = "noReferral") String refId ){
+        return userService.createUser(email, name, refId);
     }
 }
