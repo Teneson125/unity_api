@@ -40,11 +40,14 @@ public class UserService {
 
     public Map<String, String> getUserDetail(String email, String otp) {
         HashMap<String, String> map = new HashMap<>();
+        HashMap<String, User> map1 = new HashMap<>();
 
         if(otpService.validateOtp(email, otp)){
             if(checkEmailId(email)){
                 User user = userRepository.findByEmail(email);
+                map1.put("user", user);
                 map.put("message","Login Success");
+                return map;
             }
             else {
                 map.put("message","Email Not Register");
