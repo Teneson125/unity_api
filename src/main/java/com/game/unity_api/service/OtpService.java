@@ -23,6 +23,7 @@ public class OtpService {
         Otp data = otpRepository.findByEmail(email);
         if(otp.equals(data.getOtp())){
             data.setOtp("");
+            otpRepository.save(data);
             return true;
         }else {
             return false;
