@@ -8,13 +8,16 @@ public class Otp {
 
     @Id
     private String email;
-    private String tpo;
+    private String otp;
     private String createdDate;
     private String createdTime;
 
-    public Otp(String email, String tpo, String createdDate, String createdTime) {
+    public Otp(){
+        
+    }
+    public Otp(String email, String otp, String createdDate, String createdTime) {
         this.email = email;
-        this.tpo = tpo;
+        this.otp = otp;
         this.createdDate = createdDate;
         this.createdTime = createdTime;
     }
@@ -27,12 +30,12 @@ public class Otp {
         this.email = email;
     }
 
-    public String getTpo() {
-        return tpo;
+    public String getOtp() {
+        return otp;
     }
 
-    public void setTpo(String tpo) {
-        this.tpo = tpo;
+    public void setOtp(String otp) {
+        this.otp = otp;
     }
 
     public String getCreatedDate() {
