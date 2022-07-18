@@ -5,9 +5,6 @@ import javax.persistence.*;
 @Entity
 public class Referral {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @Column(unique = true)
     private String refId;
     private Double amount;
     private Integer coin;
@@ -16,6 +13,9 @@ public class Referral {
     private Integer keyDiamond;
     private String status;
 
+    public  Referral(){
+
+    }
     public Referral(String refId, Double amount, Integer coin, Integer keySilver, Integer keyGold, Integer keyDiamond, String status) {
         this.refId = refId;
         this.amount = amount;
@@ -24,14 +24,6 @@ public class Referral {
         this.keyGold = keyGold;
         this.keyDiamond = keyDiamond;
         this.status = status;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getRefId() {

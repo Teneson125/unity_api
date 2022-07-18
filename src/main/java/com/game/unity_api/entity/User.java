@@ -18,7 +18,7 @@ public class User {
     private String email;
     private String status;
     private Integer coin;
-    private Integer balance;
+    private Double balance;
     private Integer keySilver;
     private Integer keyGold;
     private Integer keyDiamond;
@@ -28,12 +28,13 @@ public class User {
     private String reason;
     private String refId;
     private String refStatus;
-    @JsonFormat(pattern = "YYYY-MM-DD")
-    private Date createdDate;
-    @JsonFormat(pattern = "HH:MM:SS")
-    private Time createdTime;
+    private String createdDate;
+    private String createdTime;
 
-    public User(String userId, String name, String email, String status, Integer coin, Integer balance, Integer keySilver, Integer keyGold, Integer keyDiamond, Integer totalReferral, Integer xp, Integer level, String reason, String refId, String refStatus, Date createdDate, Time createdTime) {
+    public User(){
+
+    }
+    public User(String userId, String name, String email, String status, Integer coin, Double balance, Integer keySilver, Integer keyGold, Integer keyDiamond, Integer totalReferral, Integer xp, Integer level, String reason, String refId, String refStatus, String createdDate, String createdTime) {
         this.userId = userId;
         this.name = name;
         this.email = email;
@@ -93,11 +94,11 @@ public class User {
         this.coin = coin;
     }
 
-    public Integer getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 
@@ -173,19 +174,19 @@ public class User {
         this.refStatus = refStatus;
     }
 
-    public Date getCreatedDate() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
-    public Time getCreatedTime() {
+    public String getCreatedTime() {
         return createdTime;
     }
 
-    public void setCreatedTime(Time createdTime) {
+    public void setCreatedTime(String createdTime) {
         this.createdTime = createdTime;
     }
 }
