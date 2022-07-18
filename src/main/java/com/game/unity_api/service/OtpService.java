@@ -36,6 +36,5 @@ public class OtpService {
         String time = dateTimeService.currentTime();
         Otp otp = new Otp(email, otpNum, date, time);
         otpRepository.save(otp);
-        System.out.println("mail sent to " + email + " otp is " + otpNum);
     }
 }
