@@ -1,13 +1,9 @@
 package com.game.unity_api.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.sql.Time;
-import java.util.Date;
 
 @Entity
 public class Transaction {
@@ -19,12 +15,10 @@ public class Transaction {
     private String productName;
     private String transactionType;
     private String reason;
-    @JsonFormat(pattern = "YYYY-MM-DD")
-    private Date date;
-    @JsonFormat(pattern = "HH:MM:SS")
-    private Time time;
+    private String date;
+    private String time;
 
-    public Transaction(String email, Double amount, String productName, String transactionType, String reason, Date date, Time time) {
+    public Transaction(String email, Double amount, String productName, String transactionType, String reason, String date, String time) {
         this.email = email;
         this.amount = amount;
         this.productName = productName;
@@ -82,19 +76,19 @@ public class Transaction {
         this.reason = reason;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 }

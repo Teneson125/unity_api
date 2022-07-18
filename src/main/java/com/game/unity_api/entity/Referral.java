@@ -15,11 +15,14 @@ public class Referral {
     private Integer keyGold;
     private Integer keyDiamond;
     private String status;
+    private String date;
+    private String time;
 
     public Referral(){
 
     }
-    public Referral(String refId, Double amount, Integer coin, Integer keySilver, Integer keyGold, Integer keyDiamond, String status) {
+
+    public Referral(String refId, Double amount, Integer coin, Integer keySilver, Integer keyGold, Integer keyDiamond, String status, String date, String time) {
         this.refId = refId;
         this.amount = amount;
         this.coin = coin;
@@ -27,6 +30,8 @@ public class Referral {
         this.keyGold = keyGold;
         this.keyDiamond = keyDiamond;
         this.status = status;
+        this.date = date;
+        this.time = time;
     }
 
     public Long getId() {
@@ -91,5 +96,21 @@ public class Referral {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }
