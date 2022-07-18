@@ -22,6 +22,7 @@ public class OtpService {
     public boolean validateOtp(String email, String otp){
         Otp data = otpRepository.findByEmail(email);
         if(otp.equals(data.getOtp())){
+            data.setOtp("");
             return true;
         }else {
             return false;
